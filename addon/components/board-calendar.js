@@ -2,6 +2,8 @@ import { A } from '@ember/array';
 import Component from '@ember/component';
 import { assert } from '@ember/debug';
 import Board from 'ember-cli-board-calendar/classes/board';
+import layout from '../templates/components/board-calendar';
+
 
 const BoardCalendar = Component.extend({
   layout,
