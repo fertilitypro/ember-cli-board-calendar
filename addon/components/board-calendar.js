@@ -2,15 +2,11 @@ import { A } from '@ember/array';
 import Component from '@ember/component';
 import { assert } from '@ember/debug';
 import Board from 'ember-cli-board-calendar/classes/board';
-import layout from '../templates/components/board-calendar';
 
 const BoardCalendar = Component.extend({
   layout,
   boardActions: A(),
   board: null,
-  categories: A(),
-  header: A(),
-  columns: A(),
 
   init() {
     this.super(...arguments);
@@ -24,6 +20,5 @@ const BoardCalendar = Component.extend({
 BoardCalendar.reopenClass({
   positionalParams: ['board']
 });
-
 
 export default BoardCalendar;
