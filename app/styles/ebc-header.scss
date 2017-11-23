@@ -1,4 +1,10 @@
 .ebc-header {
   display: flex;
   flex-direction: row;
+  border-bottom: solid 1px #000;
+
+  &__fixed {
+    position: fixed;
+    width: 100%;
+  }
 }

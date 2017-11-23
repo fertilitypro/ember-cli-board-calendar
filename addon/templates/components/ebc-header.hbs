@@ -1,3 +1,6 @@
 {{#each columns as |column|}}
-  <h4>{{column.options.label}}</h4>
+  {{ebc-header-cell
+    label=column.options.label
+    width=column.options.width
+  }}
 {{/each}}
