@@ -7,6 +7,8 @@ import layout from '../templates/components/board-calendar';
 
 
 const BoardCalendar = Component.extend({
+  classNames: ['ember-cli-board-calendar'],
+  
   layout,
   boardActions: A(),
   board: null,

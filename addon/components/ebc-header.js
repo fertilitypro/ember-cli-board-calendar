@@ -2,8 +2,8 @@ import Ember from 'ember';
 import layout from '../templates/components/ebc-header';
 
 export default Ember.Component.extend({
+  classNames: ['ebc-header'],  
   layout,
-  classNames: ['ebc-header'],
   columns: null,
 
   init() {
