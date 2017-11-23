@@ -11,7 +11,7 @@ const BoardCalendar = Component.extend({
   board: null,
 
   init() {
-    this.super(...arguments);
+    this._super(...arguments);
 
     let board = this.get('board');
 
