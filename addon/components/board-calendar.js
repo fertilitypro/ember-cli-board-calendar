@@ -8,7 +8,7 @@ const BoardCalendar = Component.extend({
   layout,
   boardActions: A(),
   board: null,
-  rows: A(),
+  categories: A(),
   header: A(),
   columns: A(),
   
