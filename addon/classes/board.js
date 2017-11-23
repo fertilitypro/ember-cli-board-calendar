@@ -27,10 +27,10 @@ export default class Board extends EmberObject.extend({
   }
 
   static createColumns(columns = []) {
-    return A(columns.map((c) => Board.createCategory(c)));     
+    return A(columns.map((c) => Board.createColumn(c)));     
   }
 
   static createCategories(categories = []) {
-    return A(categories.map((c) => Board.createColumn(c))); 
+    return A(categories.map((c) => Board.createCategory(c))); 
   }
 }
