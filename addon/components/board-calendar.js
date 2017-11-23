@@ -25,4 +25,5 @@ BoardCalendar.reopenClass({
   positionalParams: ['board']
 });
 
+
 export default BoardCalendar;
