@@ -1,7 +1,7 @@
 import EmberObject from '@ember/object';
 
 export default class Category extends EmberObject.extend({
-    options: null
+    options: null,
 }) {
  
   constructor(options = {}) {
