@@ -10,6 +10,7 @@ export default class Category extends EmberObject.extend({
     height: null,
     divisions: 30,
     label: '',
+
     divisionMap: computed('divisions','height', {
       get() {
         let height = parseInt(this.get('height'));
@@ -31,5 +32,4 @@ export default class Category extends EmberObject.extend({
 
     console.log('CATEGORY DETECTED', this.get('label'));
   }
-
 }

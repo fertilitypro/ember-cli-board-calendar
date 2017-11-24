@@ -3,7 +3,7 @@ import EmberObject from '@ember/object';
 export default class Card extends EmberObject.extend({
     classNames: [],
     divStart: 0,
-    divEnd: 0,
+    divEnd: null,
     zIndex: 1,
     top: null,
     height: null,
@@ -13,8 +13,6 @@ export default class Card extends EmberObject.extend({
   constructor(options = {}) {
     super();
     this.setProperties(options);
-    this.set('divEnd', this.get('height'));
-
     console.log('Card DETECTED');
   }
 }
