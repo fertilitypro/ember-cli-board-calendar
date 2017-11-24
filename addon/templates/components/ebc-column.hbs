@@ -1,3 +1,5 @@
-{{ebc-simple-card
-  boardActions=boardActions
-}}
+{{#each column.cards as |card| }}
+  {{ebc-card
+    card=card
+  }}
+{{/each}}

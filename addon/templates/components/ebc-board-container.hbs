@@ -4,3 +4,12 @@
     boardActions=boardActions
   }}
 {{/each}}
+
+<div class="ebc-columns-container">
+  {{#each columns as |column|}}
+    {{ebc-column
+      column=column
+      boardActions=boardActions
+    }}
+  {{/each}}
+</div>

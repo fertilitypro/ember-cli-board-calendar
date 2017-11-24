@@ -6,6 +6,7 @@ import Card from 'ember-cli-board-calendar/classes/card';
 export default class Column extends EmberObject.extend({
     classNames: [],
     columnId: null,
+    cards: [], 
     width: '100px',
     label: '',
     showLabel: true
