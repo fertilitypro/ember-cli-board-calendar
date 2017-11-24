@@ -1,7 +1,8 @@
 .ebc-header {
   display: flex;
   flex-direction: row;
-  border-bottom: solid 1px #a6a6a6;
+  border-bottom: solid 1px $ebc-border-color;
+  height: $ebc-header-height;
 
   &__fixed {
     position: fixed;
