@@ -1,12 +1,15 @@
 import EmberObject from '@ember/object';
 
 export default class Card extends EmberObject.extend({
-    options: null
+    classNames: [], 
+    top: null,
+    height: null,
+    componentName: 'ebc-simple-card'
 }) {
  
   constructor(options = {}) {
     super();
-    this.set('options', options);
+    this.setProperties(options);
 
     console.log('Card DETECTED');
   }

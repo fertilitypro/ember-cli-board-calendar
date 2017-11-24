@@ -1,13 +1,18 @@
 import EmberObject from '@ember/object';
 
 export default class Category extends EmberObject.extend({
-    options: null,
+    classNames: [],
+    top: null,
+    height: null,
+    divisions: 1,
+    label: ''
 }) {
  
   constructor(options = {}) {
     super();
-    this.set('options', options);
+    this.setProperties(options);
 
-    console.log('CATEGORY DETECTED', options.label);    
+    console.log('CATEGORY DETECTED', this.get('label'));    
   }
+
 }
