@@ -2,8 +2,14 @@
   position:relative;
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  margin-top: $ebc-header-height;
   overflow-y: auto;
+}
+
+.ebc-header__fixed {
+  & + .ebc-board-container {
+    width: 100vw;
+    margin-top: $ebc-header-height;
+  }
 }
