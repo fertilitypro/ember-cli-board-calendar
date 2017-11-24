@@ -1,9 +1,10 @@
 .ebc-board-container {
+  position:relative;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  transform: translateY($ebc-header-height);
+  // transform: translateY($ebc-header-height);
   overflow-y: auto;
 }
