@@ -5,11 +5,15 @@
   }}
 {{/each}}
 
-<div class="ebc-columns-container">
-  {{#each columns as |column|}}
-    {{ebc-column
-      column=column
-      boardActions=boardActions
-    }}
-  {{/each}}
-</div>
+{{#unless loading}}
+  <div class="ebc-columns-container">
+    {{log columns.length "COLUMNAS"}}
+    {{#each columns as |column|}}
+      {{ebc-column
+        column=column
+        categories=categories
+        boardActions=boardActions
+      }}
+    {{/each}}
+  </div>
+{{/unless}}
