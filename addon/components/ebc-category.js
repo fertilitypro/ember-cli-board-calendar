@@ -11,6 +11,7 @@ export default Component.extend({
     let offset = this.$().offset();
     let height = this.$().outerHeight();  
 
+    
     this.get('category').setProperties({
       top: offset.top,
       height
