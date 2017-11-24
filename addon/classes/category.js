@@ -5,6 +5,7 @@ import { A } from '@ember/array';
 
 export default class Category extends EmberObject.extend({
     classNames: [],
+    categoryId: null,
     top: null,
     height: null,
     divisions: 30,
@@ -23,12 +24,12 @@ export default class Category extends EmberObject.extend({
       }
     }).readOnly()
 }) {
- 
+
   constructor(options = {}) {
     super();
     this.setProperties(options);
 
-    console.log('CATEGORY DETECTED', this.get('label'));    
+    console.log('CATEGORY DETECTED', this.get('label'));
   }
 
 }

@@ -8,12 +8,12 @@ export default Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    let offset = this.$().offset();
+    let position = this.$().position();
     let height = this.$().outerHeight();
 
-    
+
     this.get('category').setProperties({
-      top: offset.top,
+      top: position.top,
       height
     });
   }
