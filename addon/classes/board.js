@@ -1,23 +1,29 @@
-
 import { A } from '@ember/array';
-import EmberObject, { computed, get } from '@ember/object';
+import EmberObject, { computed } from '@ember/object';
 import RSVP  from 'rsvp';
 import Category from 'ember-cli-board-calendar/classes/category';
 import Column from 'ember-cli-board-calendar/classes/column';
-import { isNone } from '@ember/utils';
 
 export default class Board extends EmberObject.extend({
   loading: true,
   categoryDivisions: 30,
   categories: A(),
   columns: null,
-  totalDivisionsMap: computed('categories.@each.{divisionMap}', {
+  didResize: false,
+
+  totalDivisionsMap: computed('didResize','categories.@each.{height,top}', {
     get() {
       let divisionsMap = A();
       this.get('categories').forEach((category) => {
-        divisionsMap.pushObjects(category.get('divisionMap'));
+        let height = parseInt(category.get('height'));
+        let divisions = parseInt(this.get('categoryDivisions'));
+        let stepHeight = height / divisions;
+        let top = parseInt(category.get('top'));
+
+        for (let i = 0; i < divisions; i++ ) {
+          divisionsMap.push((i * stepHeight) + top);
+        }
       });
-      console.log('DIVISIONSMAP', divisionsMap);
       return divisionsMap;
     }
   })
@@ -46,7 +52,7 @@ export default class Board extends EmberObject.extend({
   }
 
   static createCategory(category = null) {
-    return new Category(category);
+    return new Category(category, Board.categoryDivisions);
   }
 
   static createColumns(columns = []) {

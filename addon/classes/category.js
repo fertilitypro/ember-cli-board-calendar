@@ -4,32 +4,18 @@ import { A } from '@ember/array';
 
 
 export default class Category extends EmberObject.extend({
-    classNames: [],
-    categoryId: null,
-    top: null,
-    height: null,
-    divisions: 30,
-    label: '',
-
-    divisionMap: computed('divisions','top', 'height', {
-      get() {
-        let height = parseInt(this.get('height'));
-        let divisions = parseInt(this.get('divisions'));
-        let stepHeight = height / divisions;
-        let top = parseInt(this.get('top'));
-
-        let result = A([0]);
-        for (let i = 1; i < divisions; i++ ) {
-          result.push((i * stepHeight) + top);
-        }
-        return result;
-      }
-    }).readOnly()
+  classNames: [],
+  categoryId: null,
+  divisions: 30,
+  top: null,
+  height: null,
+  label: ''
 }) {
 
-  constructor(options = {}) {
+  constructor(options = {}, categoryDivisions = 30) {
     super();
     this.setProperties(options);
+    this.set('divisions', categoryDivisions);
 
     console.log('CATEGORY DETECTED', this.get('label'));
   }

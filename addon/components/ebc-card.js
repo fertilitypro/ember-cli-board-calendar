@@ -9,29 +9,37 @@ export default Component.extend({
   totalDivisionsMap: computed.alias('board.totalDivisionsMap'),
   attributeBindings: ['customStyle:style'],
 
-  getDivisionTop(divisionMap = [], startDivision = 0) {
-    return divisionMap[startDivision];
-  },
-
   getCalculatedHeight(divisionMap = [], top = 0, endDivision = null) {
      let endPosition = divisionMap[endDivision];
      return endPosition - top;
   },
 
-  top: computed('category.{divisionMap}', 'card.divStart', {
+  getCardStartIndex() {
+    let categoryDivisions = this.get('board.categoryDivisions');
+    let divStart = this.get('card.divStart');
+    let catIndex = this.get('categories').indexOf(this.get('category'));
+    let catStartIndex = (catIndex * categoryDivisions);
+    return divStart + catStartIndex ;
+  },
+
+  top: computed('totalDivisionsMap.[]', 'card.divStart', {
     get() {
-      let divStart = this.get('card.divStart');
-      let divisionMap = this.get('category.divisionMap');
-      return this.get('getDivisionTop')(divisionMap, divStart);
+      return this.get('totalDivisionsMap')[this.getCardStartIndex()];
     }
   }),
 
-  height: computed('category.{height,top}','totalDivisionsMap.[]', 'top', 'card.divEnd', {
+  height: computed('totalDivisionsMap.[]', 'card.divEnd', 'top', {
     get() {
       let divEnd = this.get('card.divEnd');
       let totalDivisionsMap = this.get('totalDivisionsMap');
-      let top = this.get('top');
-      return this.get('getCalculatedHeight')(totalDivisionsMap, top, divEnd);
+      console.log('TOTALDIVISON',  this.get('totalDivisionsMap'));
+
+      console.log('ENDCARD', totalDivisionsMap[this.getCardStartIndex() + divEnd]);
+      console.log('INDEXTOPCAT', this.getCardStartIndex() + divEnd);
+      console.log('TOP',  this.get('top'));
+
+      return totalDivisionsMap[this.getCardStartIndex() + divEnd] - this.get('top') ;
+
     }
   }),
 
