@@ -8,6 +8,19 @@ import { isNone } from '@ember/utils';
 
 export default class Board extends EmberObject.extend({
   loading: true,
+  categoryDivisions: 30,
+  categories: A(),
+  columns: null,
+  totalDivisionsMap: computed('categories.@each.{divisionMap}', {
+    get() {
+      let divisionsMap = A();
+      this.get('categories').forEach((category) => {
+        divisionsMap.pushObjects(category.get('divisionMap'));
+      });
+      console.log('DIVISIONSMAP', divisionsMap);
+      return divisionsMap;
+    }
+  })
 }) {
 
   constructor(columns = [], categories = []) {

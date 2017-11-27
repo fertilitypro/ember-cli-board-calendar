@@ -1,17 +1,16 @@
-{{#each categories as |category|}}
+{{#each board.categories as |category|}}
   {{ebc-category
     category=category
     boardActions=boardActions
   }}
 {{/each}}
 
-{{#unless loading}}
+{{#unless board.loading}}
   <div class="ebc-columns-container">
-    {{log columns.length "COLUMNAS"}}
-    {{#each columns as |column|}}
+    {{#each board.columns as |column|}}
       {{ebc-column
         column=column
-        categories=categories
+        board=board
         boardActions=boardActions
       }}
     {{/each}}

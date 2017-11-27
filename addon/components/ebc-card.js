@@ -5,6 +5,8 @@ import { computed } from '@ember/object';
 export default Component.extend({
   classNames: ['ebc-card'],
   layout,
+  categories: computed.alias('board.categories'),
+  totalDivisionsMap: computed.alias('board.totalDivisionsMap'),
   attributeBindings: ['customStyle:style'],
 
   getDivisionTop(divisionMap = [], startDivision = 0) {
@@ -16,23 +18,20 @@ export default Component.extend({
      return endPosition - top;
   },
 
-  top: computed('category.{top,divisionMap}', 'card.divStart', {
+  top: computed('category.{divisionMap}', 'card.divStart', {
     get() {
       let divStart = this.get('card.divStart');
       let divisionMap = this.get('category.divisionMap');
-      let top = this.get('category.top');
-
-      return this.get('getDivisionTop')(divisionMap, divStart) + top;
+      return this.get('getDivisionTop')(divisionMap, divStart);
     }
   }),
 
-  height: computed('category.{height,divisionMap,top}', 'top', 'card.divEnd', {
+  height: computed('category.{height,top}','totalDivisionsMap.[]', 'top', 'card.divEnd', {
     get() {
       let divEnd = this.get('card.divEnd');
-      let divisionMap = this.get('category.divisionMap');
-      let top = this.get('top') - this.get('category.top');
-
-      return this.get('getCalculatedHeight')(divisionMap, top, divEnd);
+      let totalDivisionsMap = this.get('totalDivisionsMap');
+      let top = this.get('top');
+      return this.get('getCalculatedHeight')(totalDivisionsMap, top, divEnd);
     }
   }),
 
@@ -46,7 +45,6 @@ export default Component.extend({
   category: computed('card.categoryId', 'categories.[]', {
     get() {
       let categoryId = this.get('card.categoryId')
-      console.log('ACAAAAAAAA', categoryId, this.get('categories').findBy('categoryId', categoryId));
       return this.get('categories').findBy('categoryId', categoryId);
     }
   })

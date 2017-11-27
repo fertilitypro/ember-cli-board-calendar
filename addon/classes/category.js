@@ -11,15 +11,16 @@ export default class Category extends EmberObject.extend({
     divisions: 30,
     label: '',
 
-    divisionMap: computed('divisions','height', {
+    divisionMap: computed('divisions','top', 'height', {
       get() {
         let height = parseInt(this.get('height'));
         let divisions = parseInt(this.get('divisions'));
         let stepHeight = height / divisions;
+        let top = parseInt(this.get('top'));
 
         let result = A([0]);
         for (let i = 1; i < divisions; i++ ) {
-          result.push(i * stepHeight);
+          result.push((i * stepHeight) + top);
         }
         return result;
       }
