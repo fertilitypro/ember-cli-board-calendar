@@ -6,7 +6,7 @@ import Card from 'ember-cli-board-calendar/classes/card';
 export default class Column extends EmberObject.extend({
     classNames: [],
     columnId: null,
-    cards: [], 
+    cards: [],
     width: '100px',
     label: '',
     showLabel: true
@@ -14,12 +14,7 @@ export default class Column extends EmberObject.extend({
   constructor(options = {}) {
     super();
     this.setProperties(options);
-
-    console.log('COLUMN DETECTED', this.get('label'), this.get('showLabel'));
-
-    this.setProperties({
-      cards: Column.createCards(options.cards)
-    })
+    this.set('cards', Column.createCards(options.cards));
   }
 
   static createCard(card = null) {

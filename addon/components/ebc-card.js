@@ -32,13 +32,15 @@ export default Component.extend({
     get() {
       let divEnd = this.get('card.divEnd');
       let totalDivisionsMap = this.get('totalDivisionsMap');
-      console.log('TOTALDIVISON',  this.get('totalDivisionsMap'));
 
-      console.log('ENDCARD', totalDivisionsMap[this.getCardStartIndex() + divEnd]);
-      console.log('INDEXTOPCAT', this.getCardStartIndex() + divEnd);
-      console.log('TOP',  this.get('top'));
+      let bottomIndex = this.getCardStartIndex() + divEnd;
+      let mapBound = totalDivisionsMap.get('length') - 1;
+      if (bottomIndex > mapBound){
+        console.error('[ Out of bounds of totalDivisionMap ] Falling back to the last item');
+        bottomIndex = mapBound;
+      }
 
-      return totalDivisionsMap[this.getCardStartIndex() + divEnd] - this.get('top') ;
+      return totalDivisionsMap[bottomIndex] - this.get('top') ;
 
     }
   }),
