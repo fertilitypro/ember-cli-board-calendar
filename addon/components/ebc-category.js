@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import Ember  from 'ember'; //TODO: CHange this to the namespace
 import Component from '@ember/component';
 import layout from '../templates/components/ebc-category';
 
@@ -8,12 +7,14 @@ export default Component.extend({
   layout,
   repaint(){
     let position = this.$().position();
-    let height = this.$().innerHeight();
-    let borderTopWidth = this.$().css('border-top-width');
-
+    let height = Math.round(parseInt(this.$().innerHeight()));
+    let borderTopWidth = Math.round(parseInt(this.$().css('border-top-width')));
+    let borderBottomWidth = Math.round(parseInt(this.$().css('border-bottom-width')));
     this.get('category').setProperties({
-      top: position.top + borderTopWidth,
-      height
+      top: position.top,
+      height: height,
+      borderTopWidth,
+      borderBottomWidth
     });
   },
   didInsertElement() {
