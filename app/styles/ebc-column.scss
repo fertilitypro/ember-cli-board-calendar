@@ -3,6 +3,10 @@
   display: flex;
   flex: 1;
   border-right: 1px solid $ebc-border-color;
+
+  &:first-child {
+    flex: 0 0 100px;
+  }
 }
 
 .ebc-columns-container {
