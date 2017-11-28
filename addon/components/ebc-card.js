@@ -39,8 +39,9 @@ export default Component.extend({
         console.error('[ Out of bounds of totalDivisionMap ] Falling back to the last item');
         bottomIndex = mapBound;
       }
-
-      return totalDivisionsMap[bottomIndex] - this.get('top') ;
+      let height = totalDivisionsMap[bottomIndex] - this.get('top');
+      this.set('card.height', height);
+      return height;
 
     }
   }),
