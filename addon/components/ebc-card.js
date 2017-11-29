@@ -45,7 +45,7 @@ export default Component.extend({
   customStyle: computed('top', 'height', {
     get() {
       let top = this.get('top');
-      let height = this.get('height');
+      let height = this.get('height') < 30 ? 30 : this.get('height');
       return `top:${top}px; height:${height}px;`;
     }
   }),
