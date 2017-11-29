@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import layout from '../templates/components/ebc-card';
+import { htmlSafe } from '@ember/string';
 import { computed } from '@ember/object';
 
 export default Component.extend({
@@ -46,7 +47,7 @@ export default Component.extend({
     get() {
       let top = this.get('top');
       let height = this.get('height') < 30 ? 30 : this.get('height');
-      return `top:${top}px; height:${height}px;`;
+      return htmlSafe(`top:${top}px; height:${height}px;`);
     }
   }),
   category: computed('card.categoryId', 'categories.[]', {

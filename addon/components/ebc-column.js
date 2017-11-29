@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { computed } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 import layout from '../templates/components/ebc-column';
 
 export default Ember.Component.extend({
@@ -9,7 +10,7 @@ export default Ember.Component.extend({
   attributeBindings: ['customStyle:style'],
   customStyle: computed('column.width', {
     get() {
-      return `min-width:${this.get('column.width')};`
+      return htmlSafe(`min-width:${this.get('column.width')};`);
     }
   })
 });
