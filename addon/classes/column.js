@@ -1,6 +1,5 @@
 import { A } from '@ember/array';
 import EmberObject from '@ember/object';
-import { merge } from '@ember/polyfills';
 import Card from 'ember-cli-board-calendar/classes/card';
 
 export default class Column extends EmberObject.extend({

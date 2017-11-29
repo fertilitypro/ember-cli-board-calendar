@@ -17,13 +17,15 @@ export default class Board extends EmberObject.extend({
       this.get('categories').forEach((category) => {
         let height = parseInt(category.get('height'));
         let divisions = parseInt(this.get('categoryDivisions'));
-        let stepHeight = height / divisions;
+        let stepHeight = Math.round(height / divisions);
         let top = parseInt(category.get('top'));
 
         for (let i = 0; i < divisions; i++ ) {
           divisionsMap.push((i * stepHeight) + top);
         }
       });
+
+      console.log(divisionsMap);
       return divisionsMap;
     }
   })

@@ -9,6 +9,7 @@ export default Component.extend({
   totalDivisionsMap: computed.alias('board.totalDivisionsMap'),
   attributeBindings: ['customStyle:style'],
 
+  // Gets the index
   getCardStartIndex() {
     let categoryDivisions = this.get('board.categoryDivisions');
     let divStart = this.get('card.divStart');
