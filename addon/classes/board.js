@@ -24,8 +24,6 @@ export default class Board extends EmberObject.extend({
           divisionsMap.push((i * stepHeight) + top);
         }
       });
-
-      console.log(divisionsMap);
       return divisionsMap;
     }
   })
