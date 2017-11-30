@@ -1,17 +1,27 @@
 {
   "name": "ember-cli-board-calendar",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Ember CLI addon to create precise calendars",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember calendar",
+    "ember trello board"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Nicolas Torres <ntorres@ingsw.com>",
+  "contributors": [
+    { "name": "Eloisa Da silva",
+      "email": "edasilva@ingsw.com"
+    }
+  ],
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/ingsw-dev/ember-cli-board-calendar"
+    },
   "scripts": {
     "build": "ember build",
     "start": "ember server",
