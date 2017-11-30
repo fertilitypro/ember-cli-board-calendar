@@ -1,7 +1,6 @@
 .ebc-board-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
   flex: 1;
-  overflow: auto;
+  overflow: hidden;
+  overflow-y: auto;
+  position: relative;
 }

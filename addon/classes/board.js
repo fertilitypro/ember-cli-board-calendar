@@ -11,6 +11,30 @@ export default class Board extends EmberObject.extend({
   columns: null,
   didResize: false,
 
+  containerWidth: computed('columns.@each.width', {
+    get() {
+      let width = 0;
+      if (this.get('columns')) {
+        this.get('columns').forEach((column) => {
+          width += parseInt(column.get('width'));
+        });
+      }
+      return width;
+    }
+  }),
+
+  columnHeight: computed('categories.@each.height', {
+    get() {
+      let height = 0;
+      if (this.get('categories')) {
+        this.get('categories').forEach((category) => {
+          height += parseInt(category.get('height'));
+        });
+      }
+      return height+50;
+    }
+  }),
+
   totalDivisionsMap: computed('didResize','categories.@each.{height,top}', {
     get() {
       let divisionsMap = A();
@@ -31,7 +55,6 @@ export default class Board extends EmberObject.extend({
 
   constructor(columns = [], categories = []) {
     super();
-
     new RSVP.Promise((resolve) => {
       let cats = Board.createCategories(categories);
       resolve(cats);

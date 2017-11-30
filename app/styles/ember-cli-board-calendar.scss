@@ -10,9 +10,10 @@
 
 .ember-cli-board-calendar {
   display: flex;
+  align-items: flex-start;
   flex-direction: column;
-  width: 50vw;
+  width: 100vw;
   height: 100vh;
   overflow: auto;
-  border: solid 1px red;
+  overflow-y: hidden;
 }

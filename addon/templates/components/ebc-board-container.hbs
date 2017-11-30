@@ -7,7 +7,7 @@
 {{/each}}
 
 {{#unless board.loading}}
-  <div class="ebc-columns-container">
+  <div class="ebc-columns-container" style={{columnsContainerHeight}}>
     {{#each board.columns as |column|}}
       {{ebc-column
         column=column

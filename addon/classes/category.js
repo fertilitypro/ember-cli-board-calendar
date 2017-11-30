@@ -1,5 +1,4 @@
-import EmberObject, { computed } from '@ember/object';
-import { A } from '@ember/array';
+import EmberObject from '@ember/object';
 
 export default class Category extends EmberObject.extend({
   classNames: [],

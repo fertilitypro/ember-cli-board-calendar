@@ -8,9 +8,11 @@ export default Ember.Component.extend({
   layout,
   column: null,
   attributeBindings: ['customStyle:style'],
-  customStyle: computed('column.width', {
+  customStyle: computed('column.width', 'board.columnHeight', {
     get() {
-      return htmlSafe(`min-width:${this.get('column.width')};`);
+      return htmlSafe(
+        `min-width:${this.get('column.width')};height: ${this.get('board.columnHeight')}px;`
+      );
     }
   })
 });
