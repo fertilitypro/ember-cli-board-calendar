@@ -8,8 +8,8 @@
 
 [npm-badge]: https://img.shields.io/npm/v/ember-cli-board-calendar.svg
 [npm-badge-url]: https://www.npmjs.com/package/ember-cli-board-calendar
-[travis-badge]: https://img.shields.io/travis/ngsw-dev/ember-cli-board-calendar/master.svg?label=TravisCI
-[travis-badge-url]: https://travis-ci.org/ngsw-dev/ember-cli-board-calendar
+[travis-badge]: https://img.shields.io/travis/Ingsw-dev/ember-cli-board-calendar/master.svg?label=TravisCI
+[travis-badge-url]: https://travis-ci.org/Ingsw-dev/ember-cli-board-calendar
 [circle-badge]: https://circleci.com/gh/{{USER_NAME}}/{{REPO_NAME}}/tree/master.svg?style=svg&circle-token={{CIRCLE_TOKEN}}
 [circle-badge-url]: https://circleci.com/gh/{{USER_NAME}}/{{REPO_NAME}}/tree/master
 [coveralls-badge]: https://coveralls.io/repos/github/{{USER_NAME}}/{{REPO_NAME}}/badge.svg?branch=master
