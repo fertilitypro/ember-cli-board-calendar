@@ -32,13 +32,15 @@ export default Component.extend({
 
       let bottomIndex = this.getCardStartIndex() + divEnd;
       let mapBound = totalDivisionsMap.get('length') - 1;
+      let fix = 0;
       if (bottomIndex > mapBound){
         console.warn('[ Out of bounds of totalDivisionMap ] Falling back to the last item');
         bottomIndex = mapBound;
+        fix = -30;
       }
 
       //HOTFIX FIX THIS -30
-      let height = totalDivisionsMap[bottomIndex] - this.get('category.borderBottomWidth') - this.get('top') - 30;
+      let height = totalDivisionsMap[bottomIndex] - this.get('category.borderBottomWidth') - this.get('top') + fix;
       this.set('card.height', height);
       return height;
 
