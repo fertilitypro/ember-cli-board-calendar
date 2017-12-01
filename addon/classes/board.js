@@ -31,7 +31,7 @@ export default class Board extends EmberObject.extend({
           height += parseInt(category.get('height'));
         });
       }
-      return height+50;
+      return height;
     }
   }),
 
