@@ -11,7 +11,7 @@ export default Component.extend({
     let borderTopWidth = Math.round(parseInt(this.$().css('border-top-width')));
     let borderBottomWidth = Math.round(parseInt(this.$().css('border-bottom-width')));
     this.get('category').setProperties({
-      top: position.top,
+      top: position.top + this.$().parents('.ebc-board-container').scrollTop(),
       height: height,
       borderTopWidth,
       borderBottomWidth

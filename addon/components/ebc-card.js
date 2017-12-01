@@ -19,7 +19,7 @@ export default Component.extend({
     return divStart + catStartIndex;
   },
 
-  top: computed('totalDivisionsMap.[]', 'card.divStart', {
+  top: computed('totalDivisionsMap.[]', 'card.divStart', 'board.categoryDivisions', 'category', {
     get() {
       return this.get('totalDivisionsMap')[this.getCardStartIndex()] + this.get('category.borderTopWidth');
     }
@@ -33,7 +33,7 @@ export default Component.extend({
       let bottomIndex = this.getCardStartIndex() + divEnd;
       let mapBound = totalDivisionsMap.get('length') - 1;
       if (bottomIndex > mapBound){
-        console.error('[ Out of bounds of totalDivisionMap ] Falling back to the last item');
+        console.warn('[ Out of bounds of totalDivisionMap ] Falling back to the last item');
         bottomIndex = mapBound;
       }
       let height = totalDivisionsMap[bottomIndex] - this.get('category.borderBottomWidth') - this.get('top');
