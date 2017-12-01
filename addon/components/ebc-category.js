@@ -21,5 +21,10 @@ export default Component.extend({
     this._super(...arguments);
     this.repaint();
     $(window).on('resize', this.repaint());
+  },
+
+  willDestroy() {
+    this._super(...arguments);
+    $(window).off("resize");
   }
 });
