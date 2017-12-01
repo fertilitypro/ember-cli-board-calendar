@@ -36,7 +36,9 @@ export default Component.extend({
         console.warn('[ Out of bounds of totalDivisionMap ] Falling back to the last item');
         bottomIndex = mapBound;
       }
-      let height = totalDivisionsMap[bottomIndex] - this.get('category.borderBottomWidth') - this.get('top');
+
+      //HOTFIX FIX THIS -30
+      let height = totalDivisionsMap[bottomIndex] - this.get('category.borderBottomWidth') - this.get('top') - 30;
       this.set('card.height', height);
       return height;
 
