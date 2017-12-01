@@ -9,7 +9,7 @@ export default Component.extend({
 
   customStyle: computed('board.containerWidth', {
     get() {
-      return htmlSafe(`width:${this.get('board.containerWidth')}px`);
+      return htmlSafe(`min-width:${this.get('board.containerWidth')}px`);
     }
   }),
 

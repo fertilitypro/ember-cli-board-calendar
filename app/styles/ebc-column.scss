@@ -9,6 +9,7 @@
   .ebc-column {
     position: relative;
     border-right: 1px solid $ebc-border-color;
+    flex: 1;
 
     &:first-child {
       flex: 0 0 100px;
