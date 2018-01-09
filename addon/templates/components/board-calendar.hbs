@@ -3,7 +3,16 @@
   board=board
   boardActions=boardActions
 }}
+{{#if board.hasFixedCategories}}
+  {{ebc-board-container
+    boardActions=boardActions
+    board=board
+    categories=board.fixedCategories
+    isFixed=true
+  }}
+{{/if}}
 {{ebc-board-container
   boardActions=boardActions
   board=board
+  categories=board.regularCategories
 }}

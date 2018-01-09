@@ -1,4 +1,4 @@
-{{#each board.categories as |category|}}
+{{#each categories as |category|}}
   {{ebc-category
     category=category
     classNames=category.classNames
@@ -14,6 +14,7 @@
         classNames=category.classNames
         board=board
         boardActions=boardActions
+        isFixed=isFixed
       }}
     {{/each}}
   </div>

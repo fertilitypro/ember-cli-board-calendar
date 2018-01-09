@@ -6,6 +6,7 @@ export default class Card extends EmberObject.extend({
     divEnd: null,
     top: null,
     height: null,
+    isFixed: false,
     componentName: 'ebc-simple-card'
 }) {
 

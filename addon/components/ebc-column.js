@@ -8,11 +8,17 @@ export default Ember.Component.extend({
   layout,
   column: null,
   attributeBindings: ['customStyle:style'],
-  customStyle: computed('column.width', 'board.columnHeight', {
+  isFixed: false,
+  customStyle: computed('column.width', 'board.columnHeight', 'board.fixedColumnHeight', {
     get() {
-      return htmlSafe(
-        `min-width:${this.get('column.width')};height: ${this.get('board.columnHeight')}px;`
-      );
+      let height = this.get('isFixed') ? this.get('board.fixedColumnHeight') : this.get('board.columnHeight');
+      return htmlSafe(`min-width:${this.get('column.width')};height:${height}px`);
+    }
+  }),
+
+  cards: computed('column.cards', 'isFixed', {
+    get() {
+      return this.get('column.cards').filterBy('isFixed', this.get('isFixed'));
     }
   })
 });

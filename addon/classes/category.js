@@ -8,7 +8,8 @@ export default class Category extends EmberObject.extend({
   height: null,
   borderTopWidth: null,
   borderBottomWidth: null,
-  label: ''
+  label: '',
+  isFixed: false
 }) {
 
   constructor(options = {}, categoryDivisions = 30) {

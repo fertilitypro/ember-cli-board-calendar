@@ -4,8 +4,9 @@ import { htmlSafe } from '@ember/string';
 import layout from '../templates/components/ebc-board-container';
 
 export default Component.extend({
-  classNames: ['ebc-board-container'],
+  classNameBindings: ['isFixed:ebc-board-fixed-container:ebc-board-container'],
   attributeBindings: ['customStyle:style'],
+  isFixed: false,
 
   customStyle: computed('board.containerWidth', {
     get() {
@@ -13,11 +14,11 @@ export default Component.extend({
     }
   }),
 
-  columnsContainerHeight: computed('board.columnHeight', {
+  columnsContainerHeight: computed('board.columnHeight', 'board.fixedColumnHeight', 'isFixed', {
     get() {
-      return htmlSafe(
-        `height: ${this.get('board.columnHeight')}px;`
-      );
+      let isFixed = this.get('isFixed');
+      let height = isFixed ? `${this.get('board.fixedColumnHeight')}px;` : `${this.get('board.columnHeight')}px;`
+      return htmlSafe(`height: ${height}`);
     }
   }),
   layout

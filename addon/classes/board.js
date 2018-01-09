@@ -11,6 +11,10 @@ export default class Board extends EmberObject.extend({
   columns: null,
   didResize: false,
 
+  fixedCategories: computed.filterBy('categories', 'isFixed', true),
+  regularCategories: computed.filterBy('categories', 'isFixed', false),
+  hasFixedCategories: computed.notEmpty('fixedCategories'),
+
   containerWidth: computed('columns.@each.width', {
     get() {
       let width = 0;
@@ -27,7 +31,7 @@ export default class Board extends EmberObject.extend({
     get() {
       let height = 0;
       if (this.get('categories')) {
-        this.get('categories').forEach((category) => {
+        this.get('categories').filterBy('isFixed', false).forEach((category) => {
           height += parseInt(category.get('height'));
         });
       }
@@ -35,14 +39,26 @@ export default class Board extends EmberObject.extend({
     }
   }),
 
-  totalDivisionsMap: computed('didResize','categories.@each.{height,top}', {
+  fixedColumnHeight: computed('categories.@each.height', {
+    get() {
+      let height = 0;
+      if (this.get('categories')) {
+        this.get('categories').filterBy('isFixed', true).forEach((category) => {
+          height += parseInt(category.get('height'));
+        });
+      }
+      return height;
+    }
+  }),
+
+  totalDivisionsMap: computed('didResize','categories.@each.{categoryId,height,top,borderTopWidth,borderBottomWidth}', 'categoryDivisions', {
     get() {
       let divisionsMap = A();
       this.get('categories').forEach((category) => {
-        let height = parseInt(category.get('height'));
+        let height = parseInt(category.get('height')) || 0;
         let divisions = parseInt(this.get('categoryDivisions'));
         let stepHeight = Math.round(height / divisions);
-        let top = parseInt(category.get('top'));
+        let top = parseInt(category.get('top')) || 0;
 
         for (let i = 0; i < divisions; i++ ) {
           divisionsMap.push((i * stepHeight) + top);
