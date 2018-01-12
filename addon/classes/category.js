@@ -5,7 +5,7 @@ export default class Category extends EmberObject.extend({
   categoryId: null,
   divisions: 30,
   top: null,
-  height: null,
+  height: '40px',
   borderTopWidth: null,
   borderBottomWidth: null,
   label: '',

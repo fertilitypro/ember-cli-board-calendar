@@ -1,18 +1,25 @@
 import $ from 'jquery';
 import Component from '@ember/component';
+import { computed } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 import layout from '../templates/components/ebc-category';
 
 export default Component.extend({
   classNames: ['ebc-category'],
+  attributeBindings: ['customStyle:style'],
   layout,
+  customStyle: computed('category.height', {
+    get() {
+      let height = parseInt(this.get('category.height'));
+      return htmlSafe(`height:${height}px`);
+    }
+  }),
   repaint(){
     let position = this.$().position();
-    let height = Math.round(parseInt(this.$().innerHeight()));
     let borderTopWidth = Math.round(parseInt(this.$().css('border-top-width')));
     let borderBottomWidth = Math.round(parseInt(this.$().css('border-bottom-width')));
     this.get('category').setProperties({
       top: position.top + this.$().parents('.ebc-board-container').scrollTop(),
-      height: height,
       borderTopWidth,
       borderBottomWidth
     });
