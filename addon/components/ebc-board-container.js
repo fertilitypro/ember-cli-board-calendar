@@ -21,5 +21,17 @@ export default Component.extend({
       return htmlSafe(`height: ${height}`);
     }
   }),
+  actions: {
+    cellClick(column, event){
+      let board = this.get('board');
+      let categories = this.get('isFixed') ? board.get('fixedCategories') : board.get('regularCategories');
+      let offsetY = event.pageY + this.$().scrollTop() - Math.floor(this.$().offset().top)
+      let catHeight = board.get('columnHeight') / categories.get('length');
+      let catIndex = Math.floor(offsetY / catHeight);
+      let category = categories.objectAt(catIndex);
+
+      this.get('boardActions.onSelectCell')(column, category);
+    }
+  },
   layout
 });

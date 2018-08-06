@@ -20,5 +20,9 @@ export default Ember.Component.extend({
     get() {
       return this.get('column.cards').filterBy('isFixed', this.get('isFixed'));
     }
-  })
+  }),
+
+  click(event) {
+    this.get('onCellClick')(this.get('column'), event);
+  }
 });
