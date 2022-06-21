@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { computed } from '@ember/object';
+import { alias } from '@ember/object/computed';
 import { htmlSafe } from '@ember/string';
 import layout from '../templates/components/ebc-column';
 
@@ -7,7 +8,7 @@ export default Ember.Component.extend({
   classNames: ['ebc-column'],
   layout,
   column: null,
-  attributeBindings: ['customStyle:style'],
+  attributeBindings: ['customStyle:style', 'dataCy:data-cy'],
   isFixed: false,
   customStyle: computed('column.width', 'board.columnHeight', 'board.fixedColumnHeight', {
     get() {
@@ -15,6 +16,7 @@ export default Ember.Component.extend({
       return htmlSafe(`min-width:${this.get('column.width')};height:${height}px`);
     }
   }),
+  dataCy: alias('column.dataCy'),
 
   cards: computed('column.cards', 'isFixed', {
     get() {
