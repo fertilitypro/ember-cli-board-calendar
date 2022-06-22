@@ -1,6 +1,6 @@
 {
-  "name": "ember-cli-board-calendar",
-  "version": "0.2.1",
+  "name": "mf-ember-cli-board-calendar",
+  "version": "0.2.2",
   "description": "Ember CLI addon to create precise calendars",
   "keywords": [
     "ember-addon",
