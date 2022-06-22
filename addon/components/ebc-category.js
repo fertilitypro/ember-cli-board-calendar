@@ -1,12 +1,13 @@
 import $ from 'jquery';
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { alias } from '@ember/object/computed';
 import { htmlSafe } from '@ember/string';
 import layout from '../templates/components/ebc-category';
 
 export default Component.extend({
   classNames: ['ebc-category'],
-  attributeBindings: ['customStyle:style'],
+  attributeBindings: ['customStyle:style', 'dataCy:data-cy'],
   layout,
   customStyle: computed('category.height', {
     get() {
@@ -14,6 +15,9 @@ export default Component.extend({
       return htmlSafe(`height:${height}px`);
     }
   }),
+
+  dataCy: alias('category.dataCy'),
+
   repaint(){
     let position = this.$().position();
     let borderTopWidth = Math.round(parseInt(this.$().css('border-top-width')));
